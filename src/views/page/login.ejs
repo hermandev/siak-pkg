@@ -1,0 +1,37 @@
+<%- include('../partials/header.ejs'); -%>
+
+<div class="container">
+    <div class="form-login">
+
+        <form  action="/masuk" id="frm-login" method="POST">
+            <h1>MASUK SIAK-PKG</h1>
+            <% if(error != ""){ %>
+                <div class="message-info">
+                    <%= error %>
+                </div>
+            <%}%>
+            <div class="input-group">
+                <label for="">Username</label>
+                <input type="text" name="username" id="username">
+                
+            </div>
+            <div class="input-group">
+                <label for="">Password</label>
+                <input type="password" name="password" id="password">
+                <i toggle="#password" class="far fa-eye field-icon  toggle-password"></i>
+                
+            </div>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="input-group">
+                <button id="btn-login">Masuk</button>
+            </div>
+            <div class="input-group">
+                <div class="info">
+                   lupa password? klik <a href="">disini</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs', { modal: false,chart: false }); -%>

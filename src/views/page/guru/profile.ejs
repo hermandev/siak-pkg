@@ -1,0 +1,143 @@
+<%- include('../../partials/header.ejs'); -%>
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <%- include('../../partials/sidenav-guru.ejs'); -%>
+
+
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="content">
+
+      <%- include('../../partials/topbar.ejs'); -%>
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <% if(messages.error) { %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= messages.error %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <% } %>
+        <% if(messages.success) { %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= messages.success %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <% } %>
+
+        <div class="card shadow mb-4">
+          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Edit Profile</h6>
+          </div>
+          <form action="/guru/profile" method="POST">
+            <div class="card-body p-5">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="NIP" class="col-form-label">NIP</label>
+                    <input type="text" class="form-control" id="nip" name="nip" value="<%= user.nip %>" />
+                  </div>
+                  <div class="form-group">
+                    <label for="nama" class="col-form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control" id="nama" name="nama" value="<%= user.nama %>" />
+                  </div>
+                  <div class="form-group">
+                    <label for="temp_lahir" class="col-form-label">Tempat Lahir</label>
+                    <input type="text" class="form-control" id="temp_lahir" name="temp_lahir"
+                      value="<%= user.temp_lahir %>" />
+                  </div>
+                  <div class="form-group">
+                    <label for="tgl_lahir" class="col-form-label">Tanggal Lahir</label>
+                    <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir"
+                      value="<%= user.tgl_lahir %>" />
+                  </div>
+                  <div class="form-group">
+                    <label for="agama" class="col-form-label ">Agama</label>
+                    <select class="form-control" id="agama" name="agama" value="<%= user.agama %>">
+                      <option value="0">-- Pilih agama --</option>
+                      <option value="Islam" <%= user.agama === "Islam"? "selected" :"" %>>Islam</option>
+                      <option value="Kristen" <%= user.agama === "Kristen"? "selected" :"" %>>Kristen</option>
+                      <option value="Hindu" <%= user.agama === "Hindu"? "selected" :"" %>>Hindu</option>
+                      <option value="Budha" <%= user.agama === "Budha"? "selected" :"" %>>Budha</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="" class="col-form-label">Kelamin :</label>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="kelamin" id="laki-laki" value="laki-laki"
+                        checked>
+                      <label class="form-check-label" for="laki-laki">
+                        Laki-Laki
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="kelamin" id="perempuan" value="Perempuan">
+                      <label class="form-check-label" for="perempuan">
+                        Perempuan
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="no_telp" class="col-form-label">No Hp</label>
+                    <input type="text" class="form-control" id="no_telp" name="no_telp" value="<%= user.no_telp %>" />
+                  </div>
+                  <div class="form-group">
+                    <label for="alamat">Alamat</label>
+                    <textarea class="form-control" id="alamat" rows="3" name="alamat"><%= user.alamat %></textarea>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="pddk_terakhir" class="col-form-label">Pendidikan Terakhir</label>
+                    <input type="text" class="form-control" id="pddk_terakhir" name="pddk_terakhir"
+                      value="<%= user.pddk_terakhir %>" />
+                  </div>
+                  <div class="form-group">
+                    <label for="tmt_guru" class="col-form-label">TMT Guru</label>
+                    <input type="date" class="form-control" id="tmt_guru" name="tmt_guru"
+                      value="<%= user.tmt_guru %>" />
+                  </div>
+                  <div class="form-group">
+                    <label for="pangkat" class="col-form-label">Pangkat</label>
+                    <input type="text" class="form-control" id="pangkat" name="pangkat" value="<%= user.pangkat %>" />
+                  </div>
+                  <div class="form-group">
+                    <label for="jabatan" class="col-form-label">Jabatan</label>
+                    <input type="text" class="form-control" id="jabatan" name="jabatan" value="<%= user.jabatan %>" />
+                  </div>
+                  <div class="form-group">
+                    <label for="golongan" class="col-form-label">Golongan</label>
+                    <input type="text" class="form-control" id="golongan" name="golongan"
+                      value="<%= user.golongan %>" />
+                  </div>
+                  <div class="form-group">
+                    <label for="tgs_tambahan" class="col-form-label">Tugas Tambahan</label>
+                    <input type="text" class="form-control" id="tgs_tambahan" name="tgs_tambahan"
+                      value="<%= user.tgs_tambahan %>" />
+                  </div>
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                </div>
+              </div>
+            </div>
+            <div class="card-footer text-right pl-5 pr-5">
+              <button type="submit" class="btn btn-success w-100">Edit Profile</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+    <!-- End of Main Content -->
+
+
+
+
+    <%- include('../../partials/footer.ejs', {  modal: true,chart: false}); -%>

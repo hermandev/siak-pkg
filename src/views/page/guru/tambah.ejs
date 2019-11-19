@@ -1,0 +1,93 @@
+<%- include('../../partials/header.ejs'); -%> 
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <%- include('../../partials/sidenav.ejs'); -%>
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <%- include('../../partials/topbar.ejs'); -%>
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Isi Data Sekolah</h6>
+          </div>
+          <form action="/daftar-sekolah/daftar" method="POST">
+            <div class="card-body p-5">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="npsn" class="col-form-label">NPSN</label>
+                    <input type="text" class="form-control" id="npsn" name="npsn"  />
+                  </div>
+                  <div class="form-group">
+                    <label for="nama" class="col-form-label">Nama Sekolah</label>
+                    <input type="text" class="form-control" id="nama" name="nama" />
+                  </div>
+                  <div class="form-group">
+                    <label for="jenjang" class="col-form-label ">Jenjang Pendidikan</label>
+                    <select class="form-control" id="jenjang" name="jenjang">
+                      <option value="0">-- Pilih Status --</option>
+                      <option value="TK">TK</option>
+                      <option value="SD">SD</option>
+                      <option value="SMP">SMP</option>
+                      <option value="SMA">SMA</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="status" class="col-form-label">Status</label>
+                    <select class="form-control" id="status" name="status">
+                      <option value="0">-- Pilih Status --</option>
+                      <option value="Negeri">Negeri</option>
+                      <option value="Swasta">Swasta</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="telp" class="col-form-label">No. Telp/Fax</label>
+                    <input type="text" class="form-control" id="telp" name="telp" >
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="provinsi" class="col-form-label">Provinsi</label>
+                    <input type="text" class="form-control" id="provinsi" name="provinsi" >
+                  </div>
+                  <div class="form-group">
+                    <label for="kabupaten" class="col-form-label">Kabupaten</label>
+                    <input type="text" class="form-control" id="kabupaten" name="kabupaten" >
+                  </div>
+                  <div class="form-group">
+                    <label for="kecamatan" class="col-form-label">Kecamatan</label>
+                    <input type="text" class="form-control" id="kecamatan" name="kecamatan" >
+                  </div>
+                  <div class="form-group">
+                    <label for="desa" class="col-form-label">Desa/Keluranahan</label>
+                    <input type="text" class="form-control" id="desa" name="desa">
+                  </div>
+                  <div class="form-group">
+                    <label for="kode_post" class="col-form-label">Kode Post</label>
+                    <input type="text" class="form-control" id="kode_post" name="kode_post" >
+                  </div>
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                </div>
+              </div>
+            </div>
+            <div class="card-footer text-right pl-5 pr-5">
+              <a href="/daftar-sekolah" class="btn btn-secondary">Batal</a>
+              <button type="submit" class="btn btn-success">Daftar</button>
+              
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+    <!-- End of Main Content -->
+
+    <%- include('../../partials/footer.ejs', { modal: true,chart: false}); -%>
+  </div>
+</div>

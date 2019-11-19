@@ -1,0 +1,97 @@
+<%- include('../../partials/header.ejs'); -%>
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+  <% if(users.level == "admin"){%>
+    <%- include('../../partials/sidenav.ejs'); -%>
+    <%}else if(users.level == "operator"){%>
+    <%- include('../../partials/sidenav-operator.ejs'); -%>
+    <%}else if(users.level == "guru"){%>
+    <%- include('../../partials/sidenav-guru.ejs'); -%>
+    <%}%>
+   
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <%- include('../../partials/topbar.ejs'); -%>
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+         <!-- Page Heading -->
+         <h1 class="h3 mb-2 text-gray-800">Daftar Guru</h1>
+         <p class="mb-4">Daftar Guru <%= user.nama %></a>.</p>
+         
+         <% if(messages.error) { %>
+            <div class="alert alert-danger" role="alert"><%= messages.error %></div>
+          <% } %>
+          <% if(messages.success) { %>
+            <div class="alert alert-success" role="alert"><%= messages.success %></div>
+          <% } %>
+          
+         <!-- DataTales Example -->
+         <div class="card shadow mb-4">
+           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+             <h6 class="m-0 font-weight-bold text-primary">Daftar Guru</h6>
+             <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah-sekolah"><i class="fas fa-plus-circle"></i> Tambah Sekolah</button> -->
+             <a href="/daftar-guru/daftar" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Tambah Guru</a>
+           </div>
+           <div class="card-body">
+             <div class="table-responsive">
+               
+               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                 <thead>
+                   <tr>
+                     <th>NIP</th>
+                     <th>Nama</th>
+                     <th>Pangkat/Jabatan/Golongan</th>
+                     <th>Pendidikan terakhir</th>
+                     <th class="text-center">Action</th>
+                   </tr>
+                 </thead>
+                 <tfoot>
+                   <tr>
+                    <th>NIP</th>
+                    <th>Nama</th>
+                    <th>Pangkat/Jabatan/Golongan</th>
+                    <th>Pendidikan terakhir</th>
+                     <th class="text-center">Action</th>
+                   </tr>
+                 </tfoot>
+                 <tbody>
+                   <% if(data){ %>
+                    <% data.forEach(function(guru){ %>
+                      <tr>
+                        <td><a href=""><%= guru.nip %></a></td>
+                        <td><%= guru.nama %></td>
+                        <td><%= guru.pangkat %>, <%= guru.jabatan %> / <%= guru.golongan %></td>
+                        <td><%= guru.pddk_terakhir %></td>
+                        <td class="text-center">
+                          <a href="" class="btn btn btn-outline-secondary"><i class="fas fa-eye"></i></a>
+                          <a href="" class="btn btn btn-outline-success"><i class="fas fa-pencil-alt"></i></a>
+                          <a href="" class="btn btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                      </tr>
+                    <% }); %>
+                  <% }%>
+                 </tbody>
+               </table>
+             </div>
+           </div>
+         </div>
+
+
+
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+      <!-- End of Main Content -->
+
+     
+
+
+<%- include('../../partials/footer.ejs', {  modal: true,chart: false}); -%>

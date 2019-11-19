@@ -1,0 +1,41 @@
+USers
+    - id
+    - username
+    - password
+    - level
+
+Guru
+    - id
+    - nip
+    - nama
+    - temp_lahir
+    - tgl_lahir
+    - kelamin
+    - agama
+    - alamat
+    - no_telp
+    - pddk_terakhir
+    - tmt_guru
+    - pangkat
+    - golongan
+    - jabatan
+    - tgs_tambahan
+    - npsn
+
+Lembaga
+    - id
+    - nama_lembaga
+    - no_telp
+    - kelurahan
+    - kecamatan
+    - kabupaten
+    - provinsi
+
+
+Penilaian
+    - 50 ke bawah = BURUK
+    - 60 ke bawah = KURANG
+    - 90 ke bawah = BAIK
+    - 90 ke keatas = SANGAT BAIK
+    
+
